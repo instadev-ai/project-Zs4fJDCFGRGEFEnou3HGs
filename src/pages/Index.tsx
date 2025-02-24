@@ -1,6 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
+import { Link } from "react-router-dom";
 
 const BlogPost = ({ title, excerpt, date, category }) => (
   <Card className="overflow-hidden transition-all hover:shadow-lg">
@@ -13,9 +14,11 @@ const BlogPost = ({ title, excerpt, date, category }) => (
       <p className="text-muted-foreground">{excerpt}</p>
     </CardContent>
     <CardFooter>
-      <Button variant="link" className="ml-auto">
-        Read more →
-      </Button>
+      <Link to="/blog-post" className="ml-auto">
+        <Button variant="link">
+          Read more →
+        </Button>
+      </Link>
     </CardFooter>
   </Card>
 );
