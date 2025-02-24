@@ -71,7 +71,7 @@ const Index = () => {
       {/* Hero Section */}
       <section className="relative w-full overflow-hidden py-24">
         <div className="absolute inset-0 -z-10 bg-gradient-to-b from-white/50 to-transparent backdrop-blur-[2px]" />
-        <div className="mx-auto max-w-[85rem] px-4 sm:px-6 lg:px-8">
+        <div className="mx-auto max-w-[85rem]">
           <div className="mx-auto max-w-3xl text-center">
             <h1 className="bg-gradient-to-r from-primary to-primary/50 bg-clip-text text-5xl font-bold tracking-tight text-transparent sm:text-6xl lg:text-7xl">
               Your Life
@@ -84,7 +84,7 @@ const Index = () => {
         </div>
       </section>
 
-      <main className="container relative z-10 py-16">
+      <main className="relative z-10 mx-auto max-w-[85rem] py-16">
         <div className="grid gap-12 md:grid-cols-[2fr_1fr]">
           <div className="space-y-12">
             {/* Featured Post */}
@@ -151,7 +151,7 @@ const Index = () => {
 
       {/* Footer */}
       <footer className="relative z-10 border-t border-black/5 bg-white/30 backdrop-blur-sm">
-        <div className="container py-12">
+        <div className="mx-auto max-w-[85rem] py-12">
           <div className="text-center text-sm text-muted-foreground">
             © 2024 Your Blog. All rights reserved.
           </div>
