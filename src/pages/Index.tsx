@@ -67,7 +67,7 @@ const Index = () => {
         <div className="mx-auto max-w-[85rem] px-4 sm:px-6 lg:px-8">
           <div className="mx-auto max-w-3xl text-center">
             <h1 className="bg-gradient-to-r from-primary to-primary/50 bg-clip-text text-5xl font-bold tracking-tight text-transparent sm:text-6xl lg:text-7xl">
-              Your Blog
+              Your Life
             </h1>
             <p className="mt-6 text-lg leading-8 text-muted-foreground">
               Exploring ideas, sharing knowledge, and building the future together. 
