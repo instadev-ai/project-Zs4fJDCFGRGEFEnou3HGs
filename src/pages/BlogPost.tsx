@@ -2,6 +2,7 @@ import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import { Separator } from "@/components/ui/separator";
+import { Link } from "react-router-dom";
 
 const BlogPostPage = () => {
   const post = {
@@ -62,23 +63,30 @@ const BlogPostPage = () => {
 
   return (
     <div className="min-h-screen bg-background">
-      {/* Header */}
-      <header className="border-b">
-        <div className="container py-6">
-          <Button variant="ghost" className="mb-4">← Back to Blog</Button>
+      {/* Hero Section */}
+      <section className="relative overflow-hidden bg-primary/5 py-16">
+        <div className="container relative z-10">
+          <Link to="/">
+            <Button variant="ghost" className="mb-8 -ml-4 text-muted-foreground hover:text-primary">
+              ← Back to Blog
+            </Button>
+          </Link>
           <div className="space-y-4">
-            <div className="flex items-center gap-2 text-sm text-muted-foreground">
-              <span>{post.category}</span>
-              <span>•</span>
-              <span>{post.date}</span>
-              <span>•</span>
-              <span>{post.readTime}</span>
+            <div className="flex items-center gap-3 text-sm">
+              <span className="rounded-full bg-primary/10 px-3 py-1 font-medium text-primary">
+                {post.category}
+              </span>
+              <span className="text-muted-foreground">{post.date}</span>
+              <span className="text-muted-foreground">•</span>
+              <span className="text-muted-foreground">{post.readTime}</span>
             </div>
-            <h1 className="text-4xl font-bold leading-tight lg:text-5xl">{post.title}</h1>
+            <h1 className="bg-gradient-to-r from-primary to-primary/50 bg-clip-text text-4xl font-bold tracking-tight text-transparent sm:text-5xl">
+              {post.title}
+            </h1>
             
             {/* Author info */}
-            <div className="flex items-center gap-4">
-              <Avatar>
+            <div className="flex items-center gap-4 pt-4">
+              <Avatar className="h-12 w-12">
                 <AvatarImage src={post.author.image} alt={post.author.name} />
                 <AvatarFallback>{post.author.name[0]}</AvatarFallback>
               </Avatar>
@@ -89,30 +97,35 @@ const BlogPostPage = () => {
             </div>
           </div>
         </div>
-      </header>
+        <div className="absolute inset-0 -z-10 bg-[radial-gradient(45rem_50rem_at_top,theme(colors.primary/1),transparent)]" />
+      </section>
 
-      <main className="container py-8">
-        <div className="grid gap-8 lg:grid-cols-[1fr_300px]">
+      <main className="container py-16">
+        <div className="grid gap-12 lg:grid-cols-[1fr_300px]">
           {/* Main content */}
           <article className="prose prose-gray max-w-none dark:prose-invert">
             {post.content.split('\n\n').map((paragraph, index) => (
               <div key={index} className="mb-6">
                 {paragraph.startsWith('##') ? (
-                  <h2 className="mt-8 text-2xl font-bold">{paragraph.replace('##', '').trim()}</h2>
+                  <h2 className="mt-12 text-3xl font-bold tracking-tight">{paragraph.replace('##', '').trim()}</h2>
                 ) : paragraph.startsWith('-') ? (
-                  <ul className="my-4 list-disc pl-6">
+                  <ul className="my-6 list-none space-y-3 pl-6">
                     {paragraph.split('\n').map((item, i) => (
-                      <li key={i} className="mb-2">{item.replace('-', '').trim()}</li>
+                      <li key={i} className="relative before:absolute before:-left-6 before:top-3 before:h-1.5 before:w-1.5 before:rounded-full before:bg-primary">
+                        {item.replace('-', '').trim()}
+                      </li>
                     ))}
                   </ul>
                 ) : paragraph.match(/^\d\./) ? (
-                  <ol className="my-4 list-decimal pl-6">
+                  <ol className="my-6 list-decimal space-y-3 pl-6">
                     {paragraph.split('\n').map((item, i) => (
-                      <li key={i} className="mb-2">{item.replace(/^\d\./, '').trim()}</li>
+                      <li key={i} className="pl-2">
+                        <span>{item.replace(/^\d\./, '').trim()}</span>
+                      </li>
                     ))}
                   </ol>
                 ) : (
-                  <p className="leading-relaxed">{paragraph}</p>
+                  <p className="leading-relaxed text-muted-foreground">{paragraph}</p>
                 )}
               </div>
             ))}
@@ -120,17 +133,17 @@ const BlogPostPage = () => {
 
           {/* Sidebar */}
           <aside className="space-y-8">
-            <Card>
+            <Card className="border-0 bg-card/50">
               <CardHeader>
-                <h3 className="text-lg font-semibold">Related Posts</h3>
+                <h3 className="text-xl font-bold">Related Posts</h3>
               </CardHeader>
-              <CardContent className="space-y-4">
+              <CardContent className="space-y-6">
                 {relatedPosts.map((post, index) => (
                   <div key={index}>
-                    {index > 0 && <Separator className="my-4" />}
-                    <div className="space-y-2">
-                      <div className="text-sm text-muted-foreground">{post.category}</div>
-                      <h4 className="font-medium hover:underline">{post.title}</h4>
+                    {index > 0 && <Separator className="my-6" />}
+                    <div className="group space-y-3">
+                      <div className="text-sm font-medium text-primary">{post.category}</div>
+                      <h4 className="font-medium transition-colors group-hover:text-primary">{post.title}</h4>
                       <p className="text-sm text-muted-foreground">{post.excerpt}</p>
                     </div>
                   </div>
@@ -138,14 +151,20 @@ const BlogPostPage = () => {
               </CardContent>
             </Card>
 
-            <Card>
+            <Card className="border-0 bg-primary/5">
               <CardContent className="pt-6">
                 <div className="space-y-4">
-                  <h3 className="font-semibold">Share this post</h3>
+                  <h3 className="font-bold">Share this post</h3>
                   <div className="flex gap-2">
-                    <Button variant="outline" size="sm">Twitter</Button>
-                    <Button variant="outline" size="sm">LinkedIn</Button>
-                    <Button variant="outline" size="sm">Facebook</Button>
+                    <Button variant="outline" size="sm" className="hover:bg-primary/10 hover:text-primary">
+                      Twitter
+                    </Button>
+                    <Button variant="outline" size="sm" className="hover:bg-primary/10 hover:text-primary">
+                      LinkedIn
+                    </Button>
+                    <Button variant="outline" size="sm" className="hover:bg-primary/10 hover:text-primary">
+                      Facebook
+                    </Button>
                   </div>
                 </div>
               </CardContent>
@@ -155,8 +174,8 @@ const BlogPostPage = () => {
       </main>
 
       {/* Footer */}
-      <footer className="border-t">
-        <div className="container py-8">
+      <footer className="border-t border-primary/10 bg-card/50">
+        <div className="container py-12">
           <div className="text-center text-sm text-muted-foreground">
             © 2024 Your Blog. All rights reserved.
           </div>
