@@ -133,7 +133,7 @@ const Index = () => {
                   type="email"
                   className="bg-background"
                 />
-                <Button className="w-full bg-purple-600 font-medium text-white hover:bg-purple-700">
+                <Button className="w-full bg-primary font-medium hover:bg-primary/90">
                   Subscribe
                 </Button>
               </CardContent>
