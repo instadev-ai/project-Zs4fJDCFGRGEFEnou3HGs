@@ -4,7 +4,7 @@ import { Input } from "@/components/ui/input";
 import { Link } from "react-router-dom";
 
 const BlogPost = ({ title, excerpt, date, category }) => (
-  <Card className="group overflow-hidden border-0 bg-card/50 transition-all hover:bg-card">
+  <Card className="group overflow-hidden border-0 bg-white/50 backdrop-blur-sm transition-all hover:bg-white/80">
     <CardHeader className="space-y-4">
       <div className="inline-block rounded-full bg-primary/10 px-3 py-1 text-sm font-medium text-primary">
         {category}
@@ -60,10 +60,17 @@ const Index = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-background">
+    <div className="relative min-h-screen overflow-hidden bg-gradient-to-b from-rose-100/20 via-sky-100/20 to-violet-100/20">
+      {/* Background decorative elements */}
+      <div className="pointer-events-none absolute inset-0 -z-10">
+        <div className="absolute -left-1/4 top-0 h-[500px] w-[500px] rounded-full bg-blue-500/10 blur-3xl" />
+        <div className="absolute -right-1/4 top-1/4 h-[600px] w-[600px] rounded-full bg-purple-500/10 blur-3xl" />
+        <div className="absolute bottom-0 left-1/3 h-[400px] w-[400px] rounded-full bg-rose-500/10 blur-3xl" />
+      </div>
+
       {/* Hero Section */}
-      <section className="relative w-full overflow-hidden bg-primary/5 py-24">
-        <div className="absolute inset-0 -z-10 bg-[radial-gradient(45rem_50rem_at_top,theme(colors.primary/1),transparent)]" />
+      <section className="relative w-full overflow-hidden py-24">
+        <div className="absolute inset-0 -z-10 bg-gradient-to-b from-white/50 to-transparent backdrop-blur-[2px]" />
         <div className="mx-auto max-w-[85rem] px-4 sm:px-6 lg:px-8">
           <div className="mx-auto max-w-3xl text-center">
             <h1 className="bg-gradient-to-r from-primary to-primary/50 bg-clip-text text-5xl font-bold tracking-tight text-transparent sm:text-6xl lg:text-7xl">
@@ -77,7 +84,7 @@ const Index = () => {
         </div>
       </section>
 
-      <main className="container py-16">
+      <main className="container relative z-10 py-16">
         <div className="grid gap-12 md:grid-cols-[2fr_1fr]">
           <div className="space-y-12">
             {/* Featured Post */}
@@ -100,7 +107,7 @@ const Index = () => {
           {/* Sidebar */}
           <aside className="space-y-10">
             {/* Categories */}
-            <Card className="border-0 bg-card/50">
+            <Card className="border-0 bg-white/50 backdrop-blur-sm">
               <CardHeader>
                 <CardTitle className="text-xl font-bold">Categories</CardTitle>
               </CardHeader>
@@ -120,7 +127,7 @@ const Index = () => {
             </Card>
 
             {/* Newsletter */}
-            <Card className="border-0 bg-primary/5">
+            <Card className="border-0 bg-white/50 backdrop-blur-sm">
               <CardHeader>
                 <CardTitle className="text-xl font-bold">Newsletter</CardTitle>
                 <CardDescription className="text-base">
@@ -131,7 +138,7 @@ const Index = () => {
                 <Input 
                   placeholder="Enter your email" 
                   type="email"
-                  className="bg-background"
+                  className="bg-white/70"
                 />
                 <Button className="w-full bg-red-600 font-medium text-white hover:bg-red-700">
                   Subscribe
@@ -143,7 +150,7 @@ const Index = () => {
       </main>
 
       {/* Footer */}
-      <footer className="border-t border-primary/10 bg-card/50">
+      <footer className="relative z-10 border-t border-black/5 bg-white/30 backdrop-blur-sm">
         <div className="container py-12">
           <div className="text-center text-sm text-muted-foreground">
             © 2024 Your Blog. All rights reserved.
