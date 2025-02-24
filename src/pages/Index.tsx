@@ -3,6 +3,11 @@ import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle }
 import { Input } from "@/components/ui/input";
 import { Link } from "react-router-dom";
 
+import { Button } from "@/components/ui/button";
+import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
+import { Input } from "@/components/ui/input";
+import { Link } from "react-router-dom";
+
 const BlogPost = ({ title, excerpt, date, category }) => (
   <Card className="group overflow-hidden border-0 bg-white/50 backdrop-blur-sm transition-all hover:bg-white/80">
     <CardHeader className="space-y-4">
@@ -184,3 +189,52 @@ export default Index;
                 </Button>
               </CardContent>
             </Card>
+
+
+const Index = () => {
+
+  return (
+    <div className="relative min-h-screen overflow-hidden bg-gradient-to-b from-rose-100/20 via-sky-100/20 to-violet-100/20">
+
+          <aside className="space-y-10">
+            {/* Categories */}
+            <Card className="border-0 bg-white/50 backdrop-blur-sm">
+              <CardHeader>
+                <CardTitle className="text-xl font-bold">Categories</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <nav className="flex flex-col space-y-2">
+                  {["Technology", "Design", "Architecture", "Writing"].map((category) => (
+                    <Button
+                      key={category}
+                      variant="ghost"
+                      className="justify-start hover:bg-primary/10 hover:text-primary"
+                    >
+                      {category}
+                    </Button>
+                  ))}
+                </nav>
+              </CardContent>
+            </Card>
+
+            {/* Newsletter */}
+            <Card className="relative overflow-hidden border-0 bg-gradient-to-br from-white/50 via-white/30 to-white/20 backdrop-blur-sm">
+              <div className="absolute inset-0 -z-10 bg-gradient-to-br from-red-500/5 via-red-500/10 to-red-500/5" />
+              <CardHeader>
+                <CardTitle className="text-xl font-bold">NewsBetter</CardTitle>
+                <CardDescription className="text-base">
+                  Stay updated with our latest stories and insights
+                </CardDescription>
+              </CardHeader>
+              <CardContent className="space-y-4">
+                <Input 
+                  placeholder="Enter your email" 
+                  type="email"
+                  className="border-red-100 bg-white/80 transition-colors focus-visible:ring-red-500"
+                />
+                <Button className="w-full bg-gradient-to-r from-red-600 to-red-500 font-medium text-white transition-all hover:from-red-700 hover:to-red-600">
+                  Subscribe
+                </Button>
+              </CardContent>
+            </Card>
+          </aside>
