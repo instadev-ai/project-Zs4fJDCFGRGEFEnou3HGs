@@ -64,14 +64,16 @@ const Index = () => {
       {/* Hero Section */}
       <section className="relative w-full overflow-hidden bg-primary/5 py-24">
         <div className="absolute inset-0 -z-10 bg-[radial-gradient(45rem_50rem_at_top,theme(colors.primary/1),transparent)]" />
-        <div className="mx-auto max-w-2xl text-center">
-          <h1 className="bg-gradient-to-r from-primary to-primary/50 bg-clip-text text-5xl font-bold tracking-tight text-transparent sm:text-6xl">
-            Your Blog
-          </h1>
-          <p className="mt-6 text-lg leading-8 text-muted-foreground">
-            Exploring ideas, sharing knowledge, and building the future together. 
-            Discover insights about technology, design, and innovation.
-          </p>
+        <div className="container">
+          <div className="mx-auto max-w-2xl text-center">
+            <h1 className="bg-gradient-to-r from-primary to-primary/50 bg-clip-text text-5xl font-bold tracking-tight text-transparent sm:text-6xl">
+              Your Blog
+            </h1>
+            <p className="mt-6 text-lg leading-8 text-muted-foreground">
+              Exploring ideas, sharing knowledge, and building the future together. 
+              Discover insights about technology, design, and innovation.
+            </p>
+          </div>
         </div>
       </section>
 
